@@ -62,7 +62,9 @@ export default function Book() {
 
       <section className="step">
         <h2>1. Who would you like to see?</h2>
-        {practitioner ? (
+        {practitioners.length === 0 ? (
+          <p className="muted">No one offers this service at the moment. Please call the clinic.</p>
+        ) : practitioner ? (
           <div className="chosen">
             <span>{practitioner.name}, {practitioner.title}</span>
             {practitioners.length > 1 && <button type="button" className="link" onClick={() => { setPractitioner(null); setSlot(null) }}>Change</button>}
@@ -80,7 +82,7 @@ export default function Book() {
         )}
       </section>
 
-      {practitioner && (
+      {practitioner && practitioners.length > 0 && (
         <section className="step">
           <h2>2. When?</h2>
           {slot ? (
