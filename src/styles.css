@@ -115,3 +115,7 @@ label.invalid input, label.invalid textarea { border-color: var(--danger); }
 .spinner.small { width: 18px; height: 18px; margin: auto 1rem; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
+@media (max-width: 560px) {
+  h1 { font-size: 1.4rem; }
+  .copy-row { flex-direction: column; }
+}
