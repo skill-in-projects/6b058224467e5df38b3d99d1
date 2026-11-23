@@ -1,5 +1,5 @@
 import { formatDateTime, formatDay, formatDuration, formatPrice } from '../lib/format.js'
-import { useClinic } from '../clinic.jsx'
+import { useClinic } from '../clinicContext.js'
 
 const STATUS = {
   booked: null,

@@ -49,7 +49,7 @@ export default function Manage() {
       {error && <p className="error">{error.message}</p>}
 
       {appointment.status === 'booked' && !appointment.canChange && (
-        <p className="muted">It's too close to your visit to change it online. Please call the clinic.</p>
+        <p className="muted">It’s too close to your visit to change it online. Please call the clinic.</p>
       )}
 
       {appointment.canChange && mode === 'view' && (

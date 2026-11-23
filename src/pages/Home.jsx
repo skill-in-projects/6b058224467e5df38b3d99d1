@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { api } from '../api.js'
 import { formatDuration, formatPrice } from '../lib/format.js'
-import { useClinic } from '../clinic.jsx'
+import { useClinic } from '../clinicContext.js'
 
 export default function Home() {
   const clinic = useClinic()

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { api } from '../api.js'
 import { addDays, formatDay, groupSlots } from '../lib/format.js'
-import { useClinic } from '../clinic.jsx'
+import { useClinic } from '../clinicContext.js'
 
 const DAYS_SHOWN = 14
 

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { api } from '../api.js'
 import { addDays, formatDay } from '../lib/format.js'
-import { useClinic } from '../clinic.jsx'
+import { useClinic } from '../clinicContext.js'
 
 const KEY_STORE = 'clinic.staffKey'
 const STATUS_LABEL = { booked: 'Booked', cancelled: 'Cancelled', completed: 'Done', no_show: 'No-show' }
@@ -128,7 +128,7 @@ function PractitionerColumn({ column, staffKey, date, onChanged }) {
           </div>
           <div>{a.patientName} · {a.serviceName}</div>
           <small className="muted"><a href={`tel:${a.patientPhone}`}>{a.patientPhone}</a> · {a.patientEmail}</small>
-          {a.notes && <p className="notes">"{a.notes}"</p>}
+          {a.notes && <p className="notes">“{a.notes}”</p>}
           {a.rescheduleCount > 0 && <small className="muted">Moved {a.rescheduleCount}x by the patient</small>}
           {a.status === 'booked' && (
             <div className="visit-actions">

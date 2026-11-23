@@ -1,9 +1,8 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { api } from './api.js'
+import { ClinicContext } from './clinicContext.js'
 
-// The clinic facts every screen needs (name, time zone, notice hours, today in clinic time), loaded once.
-const ClinicContext = createContext(null)
-
+/** Loads the clinic facts once; nothing renders until they are here, so no screen has to handle "no clinic yet". */
 export function ClinicProvider({ children }) {
   const [clinic, setClinic] = useState(null)
   const [error, setError] = useState(null)
@@ -15,8 +14,4 @@ export function ClinicProvider({ children }) {
   if (error) return <div className="page"><p className="error">{error.message}</p></div>
   if (!clinic) return <div className="page"><div className="spinner" aria-label="Loading" /></div>
   return <ClinicContext.Provider value={clinic}>{children}</ClinicContext.Provider>
-}
-
-export function useClinic() {
-  return useContext(ClinicContext)
 }

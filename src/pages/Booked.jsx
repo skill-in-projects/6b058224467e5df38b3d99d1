@@ -13,12 +13,12 @@ export default function Booked() {
   return (
     <div className="page narrow">
       <div className="success-mark" aria-hidden="true">✓</div>
-      <h1>You're booked</h1>
+      <h1>You’re booked</h1>
       <AppointmentSummary appointment={state.appointment} />
 
       <div className="card manage-link">
         <h2>Keep this link</h2>
-        <p>It's the only way to move or cancel your visit online. Anyone with the link can change the booking, so don't share it.</p>
+        <p>It’s the only way to move or cancel your visit online. Anyone with the link can change the booking, so don’t share it.</p>
         <div className="copy-row">
           <input readOnly value={link} onFocus={(e) => e.target.select()} aria-label="Your manage link" />
           <button

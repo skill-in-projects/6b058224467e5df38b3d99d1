@@ -1,5 +1,6 @@
 import { HashRouter, Link, Route, Routes } from 'react-router-dom'
-import { ClinicProvider, useClinic } from './clinic.jsx'
+import { ClinicProvider } from './clinic.jsx'
+import { useClinic } from './clinicContext.js'
 import Home from './pages/Home.jsx'
 import Book from './pages/Book.jsx'
 import Booked from './pages/Booked.jsx'
