@@ -1,4 +1,4 @@
-import { formatDay, formatDuration, formatPrice, formatTime } from '../lib/format.js'
+import { formatDateTime, formatDay, formatDuration, formatPrice } from '../lib/format.js'
 import { useClinic } from '../clinic.jsx'
 
 const STATUS = {
@@ -19,7 +19,7 @@ export default function AppointmentSummary({ appointment: a }) {
       <div><dt>Price</dt><dd>{formatPrice(a.service.priceCents)}</dd></div>
       {a.status === 'booked' && (
         <p className="muted small">
-          You can move or cancel online until {formatDay(a.changeDeadline.slice(0, 10))} {formatTime(a.changeDeadline, clinic.timeZoneId)}.
+          You can move or cancel online until {formatDateTime(a.changeDeadline, clinic.timeZoneId)}.
         </p>
       )}
     </dl>

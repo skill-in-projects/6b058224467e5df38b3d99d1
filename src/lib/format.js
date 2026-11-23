@@ -30,6 +30,15 @@ export function formatTime(utcIso, timeZone) {
   return new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone }).format(new Date(utcIso))
 }
 
+/** A UTC instant as clinic-local day and time, for example "Mon 30 Nov, 09:00". */
+export function formatDateTime(utcIso, timeZone) {
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', hour12: false, timeZone,
+  }).formatToParts(new Date(utcIso))
+  const get = (type) => parts.find((p) => p.type === type)?.value
+  return `${get('weekday')} ${get('day')} ${get('month')}, ${get('hour')}:${get('minute')}`
+}
+
 /** "2026-12-01" plus n days, as "yyyy-mm-dd". */
 export function addDays(isoDate, n) {
   const [y, m, d] = isoDate.split('-').map(Number)
