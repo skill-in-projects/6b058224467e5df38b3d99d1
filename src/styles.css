@@ -52,6 +52,7 @@ label.invalid input, label.invalid textarea { border-color: var(--danger); }
 .page.narrow { max-width: 640px; }
 .page.wide { max-width: 1280px; }
 .hero p { color: var(--muted); max-width: 560px; }
+.hero .hero-tagline { color: inherit; font-weight: 700; font-size: 1.15rem; }
 
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin: 1.25rem 0; }
 .cards.compact { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); margin: 0; }
