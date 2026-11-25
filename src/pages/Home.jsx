@@ -17,6 +17,7 @@ export default function Home() {
     <div className="page">
       <section className="hero">
         <h1>Book a visit at {clinic.name}</h1>
+        <p>Hello 30-2</p>
         <p>Pick a service, choose a time that suits you, and get a confirmation straight away. No account needed.</p>
       </section>
 
