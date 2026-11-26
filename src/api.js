@@ -3,6 +3,8 @@
 
 const base = () => (window.CONFIG?.API_URL || '').replace(/\/$/, '')
 
+export const RESTING_EVENT = 'clinic:resting'
+
 export class ApiError extends Error {
   constructor(status, body) {
     super(body?.message || 'Something went wrong. Please try again.')
@@ -25,6 +27,8 @@ async function request(path, { method = 'GET', body, staffKey, signal } = {}) {
   }
   if (response.status === 204) return null
   const data = await response.json().catch(() => null)
+  // The database is over its limit for now: App swaps every screen for one calm message.
+  if (response.status === 503 && data?.code === 'database_resting') window.dispatchEvent(new Event(RESTING_EVENT))
   if (!response.ok) throw new ApiError(response.status, data)
   return data
 }
@@ -43,6 +47,7 @@ export const api = {
   cancel: (token, reason) => request(`/api/appointments/manage/${encodeURIComponent(token)}/cancel`, { method: 'POST', body: { reason } }),
   reschedule: (token, startsAt) =>
     request(`/api/appointments/manage/${encodeURIComponent(token)}/reschedule`, { method: 'POST', body: { startsAt } }),
+  minutes: (from, days = 7) => request(`/api/stats/minutes?${query({ from, days })}`),
   staffDay: (key, date) => request(`/api/staff/day?${query({ date })}`, { staffKey: key }),
   staffStatus: (key, id, status, reason) =>
     request(`/api/staff/appointments/${id}/status`, { method: 'POST', body: { status, reason }, staffKey: key }),

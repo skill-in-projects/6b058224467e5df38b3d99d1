@@ -1,0 +1,10 @@
+{
+  "name": "Harbor Street Clinic",
+  "brief": "A booking app for a small clinic. Patients pick a service, a practitioner and a free time, then move or cancel with the link they get. Staff have a front desk day view, and a Minutes dashboard shows booked visit time per day, practitioner and service.",
+  "pages": [
+    { "name": "Landing page", "path": "/" },
+    { "name": "Book a visit", "path": "/#/book/1" },
+    { "name": "Minutes", "path": "/#/minutes" },
+    { "name": "Front desk", "path": "/#/staff" }
+  ]
+}
