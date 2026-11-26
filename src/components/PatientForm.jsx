@@ -1,4 +1,7 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+
+const MAX_NOTES = 500
+const EMOJIS = ['🙂', '😀', '😅', '😊', '😐', '😟', '😢', '😷', '🤒', '🤕', '🙏', '👍', '❤️', '⏰']
 
 const FIELDS = [
   { name: 'name', label: 'Full name', autoComplete: 'name' },
@@ -10,6 +13,22 @@ const FIELDS = [
 export default function PatientForm({ busy, fieldErrors = {}, onSubmit }) {
   const [values, setValues] = useState({ name: '', email: '', phone: '', notes: '' })
   const set = (name) => (e) => setValues((v) => ({ ...v, [name]: e.target.value }))
+  const [emojisOpen, setEmojisOpen] = useState(false)
+  const notesRef = useRef(null)
+
+  /** Puts the emoji where the cursor is in the notes box (or at the end), and keeps the cursor after it. */
+  const addEmoji = (emoji) => {
+    const box = notesRef.current
+    const start = box?.selectionStart ?? values.notes.length
+    const end = box?.selectionEnd ?? start
+    const next = values.notes.slice(0, start) + emoji + values.notes.slice(end)
+    if (next.length > MAX_NOTES) return
+    setValues((v) => ({ ...v, notes: next }))
+    requestAnimationFrame(() => {
+      box?.focus()
+      box?.setSelectionRange(start + emoji.length, start + emoji.length)
+    })
+  }
 
   return (
     <form
@@ -37,9 +56,21 @@ export default function PatientForm({ busy, fieldErrors = {}, onSubmit }) {
       ))}
       <label className={fieldErrors.notes ? 'invalid' : ''}>
         <span>Anything the clinic should know? (optional)</span>
-        <textarea name="notes" rows={3} maxLength={500} value={values.notes} onChange={set('notes')} />
+        <textarea ref={notesRef} name="notes" rows={3} maxLength={MAX_NOTES} value={values.notes} onChange={set('notes')} />
         {fieldErrors.notes && <small className="error">{fieldErrors.notes}</small>}
       </label>
+      <div className="emoji-picker">
+        <button type="button" className="emoji-toggle" aria-expanded={emojisOpen} onClick={() => setEmojisOpen((o) => !o)}>
+          🙂 {emojisOpen ? 'Hide emojis' : 'Add an emoji'}
+        </button>
+        {emojisOpen && (
+          <div className="emoji-list" role="group" aria-label="Emojis to add to your note">
+            {EMOJIS.map((emoji) => (
+              <button key={emoji} type="button" aria-label={`Add ${emoji}`} onClick={() => addEmoji(emoji)}>{emoji}</button>
+            ))}
+          </div>
+        )}
+      </div>
       <button className="primary" type="submit" disabled={busy}>
         {busy ? 'Booking...' : 'Confirm booking'}
       </button>

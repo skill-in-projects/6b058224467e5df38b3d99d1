@@ -143,6 +143,13 @@ label.invalid input, label.invalid textarea { border-color: var(--danger); }
 .chart-table table { border-collapse: collapse; margin-top: 0.5rem; font-variant-numeric: tabular-nums; }
 .chart-table th, .chart-table td { text-align: left; padding: 0.3rem 1.5rem 0.3rem 0; border-bottom: 1px solid var(--line); }
 
+/* Emoji buttons under the notes box on the booking form. */
+.emoji-picker { margin: -0.5rem 0 0.9rem; }
+.emoji-toggle { border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 0.25rem 0.7rem; font-size: 0.85rem; cursor: pointer; }
+.emoji-list { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.5rem; }
+.emoji-list button { border: 1px solid var(--line); background: #fff; border-radius: 8px; width: 2.4rem; height: 2.4rem; font-size: 1.25rem; line-height: 1; padding: 0; cursor: pointer; }
+.emoji-list button:hover, .emoji-toggle:hover { background: rgba(15, 118, 110, 0.06); }
+
 .mini-bars { display: grid; gap: 0.3rem; margin-top: 1rem; max-width: 380px; }
 .mini-bar-row { display: grid; grid-template-columns: 5.5rem 1fr; align-items: center; gap: 0.5rem; font-size: 0.8rem; }
 .mini-bar-name { color: var(--muted); white-space: nowrap; }

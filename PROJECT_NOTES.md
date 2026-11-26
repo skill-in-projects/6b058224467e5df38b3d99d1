@@ -6,7 +6,8 @@ Staff use a front desk day view. Times are shown in the clinic's time zone (Asia
 
 ## Screens (HashRouter)
 - `/` Home: heading "Book a visit at ...", the line "Hello 30-2" under it (bold, dark: the user chose this), service cards.
-- `/book/:serviceId` Book: practitioner, day, time, patient details.
+- `/book/:serviceId` Book: practitioner, day, time, patient details. Under the notes box an "Add an emoji" button
+  opens a row of emoji buttons that insert into the note (the user asked for "smiley buttons"; placement was assumed).
 - `/booked` Confirmation with the manage link (shown once).
 - `/manage/:token` Move or cancel a visit.
 - `/staff` Front desk day view. Needs the staff key (X-Staff-Key header vs the CLINIC_STAFF_KEY variable).
