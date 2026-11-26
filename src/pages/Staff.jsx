@@ -43,7 +43,7 @@ export default function Staff() {
   return (
     <div className="page wide">
       <div className="staff-bar">
-        <h1>Front desk <span aria-hidden="true">🐶</span></h1>
+        <h1>Front desk <span aria-hidden="true">🐶 🐱</span></h1>
         <div className="date-nav">
           <button type="button" onClick={() => setDate(addDays(date, -1))} aria-label="Previous day">‹</button>
           <strong>{formatDay(date, { long: true })}</strong>
@@ -68,7 +68,7 @@ function KeyForm({ error, onKey }) {
   const [value, setValue] = useState('')
   return (
     <div className="page narrow">
-      <h1>Front desk <span aria-hidden="true">🐶</span></h1>
+      <h1>Front desk <span aria-hidden="true">🐶 🐱</span></h1>
       <form className="card" onSubmit={(e) => { e.preventDefault(); if (value.trim()) onKey(value.trim()) }}>
         <label>
           <span>Staff key</span>
