@@ -12,7 +12,8 @@ Staff use a front desk day view. Times are shown in the clinic's time zone (Asia
 - `/staff` Front desk day view. Needs the staff key (X-Staff-Key header vs the CLINIC_STAFF_KEY variable).
   The variable is not set in this workspace, so this page answers "The staff key is not set up on the server yet".
 - `/minutes` Minutes dashboard: booked minutes for one week (Sunday start), with week arrows. Tiles (booked minutes,
-  visits, average visit, busiest day), columns per day, bars per practitioner and per service, and a table view.
+  visits, average visit, busiest day), columns per day, bars per practitioner and per service, and a table view
+  ("Show as a table") with a small bar chart of minutes per day under the table (the user asked for it there).
   Open without the staff key because it shows totals only (no patient details). Linked from the header.
 
 ## API

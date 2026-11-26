@@ -143,6 +143,13 @@ label.invalid input, label.invalid textarea { border-color: var(--danger); }
 .chart-table table { border-collapse: collapse; margin-top: 0.5rem; font-variant-numeric: tabular-nums; }
 .chart-table th, .chart-table td { text-align: left; padding: 0.3rem 1.5rem 0.3rem 0; border-bottom: 1px solid var(--line); }
 
+.mini-bars { display: grid; gap: 0.3rem; margin-top: 1rem; max-width: 380px; }
+.mini-bar-row { display: grid; grid-template-columns: 5.5rem 1fr; align-items: center; gap: 0.5rem; font-size: 0.8rem; }
+.mini-bar-name { color: var(--muted); white-space: nowrap; }
+.mini-bar-track { display: flex; align-items: center; gap: 0.4rem; border-left: 1px solid #c5ccd4; }
+.mini-bar-fill { height: 8px; background: var(--brand); border-radius: 0 3px 3px 0; }
+.mini-bar-value { white-space: nowrap; font-variant-numeric: tabular-nums; }
+
 .chart-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0 1rem; }
 .chart-pair .step { margin-top: 0; }
 .hbars { display: grid; gap: 0.75rem; }

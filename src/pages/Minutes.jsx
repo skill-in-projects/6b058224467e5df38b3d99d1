@@ -149,8 +149,27 @@ function DayColumns({ days, today }) {
             ))}
           </tbody>
         </table>
+        <MiniBars days={days} />
       </details>
     </>
+  )
+}
+
+/** The table's minutes again as small bars, one per day; the table above it carries the exact values. */
+function MiniBars({ days }) {
+  const top = Math.max(1, ...days.map((d) => d.minutes))
+  return (
+    <div className="mini-bars" role="img" aria-label="Small bar chart of booked minutes per day">
+      {days.map((d) => (
+        <div key={d.date} className="mini-bar-row">
+          <span className="mini-bar-name">{formatDay(d.date)}</span>
+          <div className="mini-bar-track">
+            <div className="mini-bar-fill" style={{ width: `calc((100% - 4.5rem) * ${d.minutes / top})` }} />
+            <span className="mini-bar-value">{number.format(d.minutes)} min</span>
+          </div>
+        </div>
+      ))}
+    </div>
   )
 }
 
